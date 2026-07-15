@@ -175,6 +175,10 @@ func (nirp *nearIRPerson) DoCommand(ctx context.Context, cmd map[string]interfac
 	return nil, resource.ErrDoUnimplemented
 }
 
+func (nirp *nearIRPerson) Status(ctx context.Context) (map[string]interface{}, error) {
+	return map[string]interface{}{}, nil
+}
+
 func (nirp *nearIRPerson) Infer(ctx context.Context, tensors ml.Tensors) (ml.Tensors, error) {
 	input, err := processInput(tensors)
 	if err != nil {

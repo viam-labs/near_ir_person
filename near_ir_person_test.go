@@ -17,7 +17,7 @@ import (
 func TestImageDetection(t *testing.T) {
 	logger := logging.NewTestLogger(t)
 	name := resource.NewName(mlmodel.API, "test_model")
-	theModel, err := initModel(name, logger)
+	theModel, err := InitModel(name, logger)
 	test.That(t, err, test.ShouldBeNil)
 
 	// check the metaata
@@ -36,7 +36,7 @@ func TestImageDetection(t *testing.T) {
 	inMap := ml.Tensors{}
 	inMap["image"] = tensor.New(
 		tensor.WithShape(1, resized.Bounds().Dy(), resized.Bounds().Dx(), 3),
-		tensor.WithBacking(rimage.ImageToUInt8Buffer(resized)),
+		tensor.WithBacking(rimage.ImageToUInt8Buffer(resized, false)),
 	)
 	// infer
 	outMap, err := theModel.Infer(context.Background(), inMap)

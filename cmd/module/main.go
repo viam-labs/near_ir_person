@@ -33,9 +33,8 @@ func main() {
 func realMain() error {
 
 	ctx := context.Background()
-	logger := logging.NewDebugLogger("client")
 
-	myMod, err := module.NewModuleFromArgs(ctx, logger)
+	myMod, err := module.NewModuleFromArgs(ctx)
 	if err != nil {
 		return err
 	}
