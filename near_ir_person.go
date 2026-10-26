@@ -156,6 +156,9 @@ func InitModel(name resource.Name, logger logging.Logger) (*nearIRPerson, error)
 		arbitraryOutput,
 		options,
 	)
+	if err != nil {
+		return nil, err
+	}
 
 	modelSes := modelSession{
 		Session: session,
