@@ -16,7 +16,7 @@ var testImport = flag.Bool("test-import", false, "just test DLL import and then 
 func main() {
 	flag.Parse()
 	if *testImport {
-		name := resource.NewName(resource.API{resource.APIType{"viam", "service"}, "mlmodel"}, "test-import")
+		name := resource.NewName(resource.API{Type: resource.APIType{Namespace: "viam", Name: "service"}, SubtypeName: "mlmodel"}, "test-import")
 		_, err := near_ir_person.InitModel(name, logging.NewLogger("test-import"))
 		if err != nil {
 			panic(err)
